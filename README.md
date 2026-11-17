@@ -1,42 +1,49 @@
 # LMS Mentor
 
-An Agent Skill for selected CS LMS assignments: inspect and check the work, submit the assignments selected by the user, then explain AP Computer Science A concepts and difficult points. The skill's instructions and explanations are primarily in Chinese.
+LMS Mentor 是一个面向 CS LMS 作业的 Agent Skill。它帮助用户定位并检查选定的作业、提交答案，并结合题目讲解 AP Computer Science A（AP CSA）知识点和难题陷阱。
 
-> Selecting an assignment authorizes the agent to complete and submit it. Check the assignment and course rules before use. The skill requires a compatible agent with access to the user's LMS session and suitable browser or device controls; it does not provide those tools.
+> **提交说明：**确认要处理哪些作业，即表示授权 agent 完成并直接提交这些作业。使用前请了解课程和作业的相关要求。
 
-## Install
+## 安装
 
-Ask a capable agent:
+向支持联网和安装技能的 agent 发送：
 
-> Install `lms-mentor` from https://github.com/bYYYyyL/lms-mentor
+> 帮我从 https://github.com/bYYYyyL/lms-mentor 安装 lms-mentor。
 
-Or, where Node.js and the [skills CLI](https://github.com/vercel-labs/skills) are available:
+也可以在安装了 Node.js 的环境中，使用 [skills CLI](https://github.com/vercel-labs/skills)：
 
 ```sh
 npx skills add bYYYyyL/lms-mentor --skill lms-mentor
 ```
 
-For Codex, ask it to use its skill installer with repository `bYYYyyL/lms-mentor` and path `skills/lms-mentor`. To install manually, copy `skills/lms-mentor` into the skills directory used by your agent and reload the agent if necessary.
+对于 Codex，也可以要求它使用技能安装器，指定仓库 `bYYYyyL/lms-mentor` 和路径 `skills/lms-mentor`。手动安装时，将 `skills/lms-mentor` 文件夹复制到所用 agent 的技能目录，并按该 agent 的要求重新加载。
 
-Different agents use different discovery, permissions, and installation mechanisms. A name-only request may not find this repository; providing the URL makes the source unambiguous. Not every device or agent supports access to an existing browser session.
+不同 agent 的安装方式和搜索范围不同。只提供名称不一定能找到本项目；提供仓库地址可以明确安装来源。
 
-## Use
+## 使用方法
 
-1. Open and sign in to CS LMS in an agent-accessible browser or app. Provide the course page or LMS address when needed.
-2. Enable the browser or device control tools and permissions required by your agent.
-3. Ask: “Use LMS Mentor to list my pending CS LMS assignments.” Confirm which assignments to complete and submit.
-4. Review the submission status and the explanation of concepts and difficult questions.
+1. 在 agent 能够操作的浏览器或应用中打开并登录 CS LMS；必要时提供课程页面或 LMS 地址。
+2. 按所用 agent 的要求启用浏览器或设备操作工具，并授予必要权限。
+3. 发送：“使用 LMS Mentor，列出当前课程的待提交作业。”
+4. 确认需要完成并提交的作业，之后查看提交状态和知识点讲解。
 
-If login or verification is required, complete it yourself; do not send passwords in chat. If connection fails, the skill reports the problem and waits for you to request another attempt. No LMS or browser integration has yet been tested for every environment.
+技能会按知识点解释规则和题目推理，说明难题的潜在陷阱，并列出较难题目的题号。
 
-## 中文说明
+## 使用前了解
 
-这是一个面向 CS LMS 作业的 Agent Skill。使用前请登录 LMS，并确保 agent 能操作目标浏览器或设备会话。技能会列出待提交作业，等待用户确认；确认所选作业即授权 agent 完成并提交，随后总结 AP CSA 知识点和难题陷阱。
+- **浏览器和设备：**技能优先使用用户指定或已登录的可操作会话。它不自带浏览器控制工具；具体支持哪些设备、浏览器和应用，取决于所用 agent 的能力及权限。
+- **登录：**遇到登录、验证码或会话过期时，请在浏览器或应用中自行处理，不要在聊天中发送密码。
+- **连接失败：**agent 会提醒用户，不自动等待或重试；处理问题后，明确要求它继续。
+- **验证范围：**仓库中的技能已通过格式校验，并测试过从 GitHub 安装；尚未验证所有 agent、设备和 LMS 环境。
 
-可以直接告诉支持安装技能的 agent：“从 https://github.com/bYYYyyL/lms-mentor 安装 lms-mentor”。不同 agent 的安装方式、联网能力和设备权限不同，单凭技能名称不一定能搜索到仓库。
-
-## Structure
+## 项目结构
 
 ```text
-skills/lms-mentor/SKILL.md
+lms-mentor/
+├── README.md
+└── skills/
+    └── lms-mentor/
+        └── SKILL.md
 ```
+
+`SKILL.md` 包含技能的触发描述和执行规则；本页面说明如何安装和使用。
